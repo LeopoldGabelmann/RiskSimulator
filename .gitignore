@@ -1,0 +1,40 @@
+# temporary data
+*.ipynb_checkpoints/
+*.pyc
+**/.empty/
+**/.mypy_cache/
+**/__pycache__/
+
+# setuptools distribution folder
+/dist/
+/build/
+
+# python egg metadata, regenerated from source files by setuptools
+/*.egg-info
+.coverage*
+
+# workspace settings
+*.idea/
+*.code-workspace
+
+# data or report file types
+*.html
+*.csv
+*.excel
+*.xls
+*.xlsx
+*.png
+*.pkl
+*.npy
+*.db
+*.h5
+
+# documentation builds
+doc/build
+public/
+
+# folders
+
+
+# symlinks
+**/__pycache__
