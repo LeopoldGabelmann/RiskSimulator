@@ -1,7 +1,7 @@
-import random
-from typing import Tuple, List
 import logging
+import random
 import statistics
+from typing import Tuple
 
 logger = logging.getLogger(__name__)
 
@@ -169,7 +169,7 @@ class MonteCarloSimulator:
             bootstrap_counts.append(
                 (self.run_one_bootstrap(nruns=nruns, verbose=print_bootstrap))
             )
-            bootstrap_count = bootstrap_count +1
+            bootstrap_count = bootstrap_count + 1
 
         unzipped = list(zip(*bootstrap_counts))
         mean_attacker = statistics.mean(unzipped[0])
@@ -184,6 +184,8 @@ class MonteCarloSimulator:
             f"{per_defender:3.2f}% loss for the defender"
         )
 
+        return mean_attacker, mean_defender
+
 
 if __name__ == "__main__":
     logging.basicConfig(
@@ -193,7 +195,5 @@ if __name__ == "__main__":
     )
 
     simulator = MonteCarloSimulator(defender_range=(0, 6), attacker_range=(0, 6))
-    # c_at, c_de = simulator.run_one_bootstrap(nruns=10, verbose=1)
-    c_at, c_de = simulator.run_bootstrap_monte_carlo(
-        n_bootstraps=10000, nruns=100000, verbose=1000
-    )
+    c_at, c_de = simulator.run_one_bootstrap(nruns=10, verbose=1)
+    simulator.run_bootstrap_monte_carlo(n_bootstraps=1000, nruns=10000, verbose=50)
